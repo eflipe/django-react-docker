@@ -8,4 +8,4 @@ class Pictures(models.Model):
     year = models.CharField(max_length=4, blank=True)
 
     def __str__(self):
-        return self.title
+        return self.titulo
