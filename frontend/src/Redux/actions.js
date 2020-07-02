@@ -18,14 +18,14 @@ export const getPosts = () => {
     }
 }
 
-export const deletePost = (id,cb) => {
+export const deletePost = (pk,cb) => {
     return dispatch => {
-        console.log(id)
+        console.log(pk)
         dispatch({type:Types.POSTS_LOADING, payload:true})
-        axios.delete(API_URL + id)
+        axios.delete(API_URL + pk)
 
             .then(response => {
-                    dispatch({type:Types.DELETE_POST, payload:id});
+                    dispatch({type:Types.DELETE_POST, payload:pk});
                 cb();
                 }
             )

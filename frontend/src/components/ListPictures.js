@@ -12,8 +12,8 @@ class ListPictures extends React.Component {
         this.props.getPosts();
     }
 
-    deletePost = (id) => {
-        this.props.deletePost(id, this.info);
+    deletePost = (pk) => {
+        this.props.deletePost(pk, this.info);
     }
 
     info() {
@@ -34,12 +34,12 @@ class ListPictures extends React.Component {
                           <Col span={4}>
                             <Card
                                 hoverable
-                                key={p.id}
+                                key={p.pk}
                                 bordered={true}
                                 style={{width: 240}}
                                 cover={<img alt={p.titulo} src={p.url_pic} />}
                                 actions={[
-                                    <DeleteOutlined key="delete" onClick={()=>this.deletePost(p.id)} />,
+                                    <DeleteOutlined key="delete" onClick={()=>this.deletePost(p.pk)} />,
                                 ]}
                             >
                                 <Meta title={p.titulo} description={p.autor} />
