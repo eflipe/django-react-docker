@@ -1,0 +1,40 @@
+version: "3.7"
+
+services:
+  backend:
+    build: ./backend
+
+    command: gunicorn backend.wsgi --bind 0.0.0.0:8000
+
+    enviroment:
+      - ALLOWED_HOSTS=['heyheymycode.herokuapp.com', '192.168.99.100', '127.0.0.1', 'localhost', 'backend', 'api']
+      - SECRET_KEY=u(h6#2*480(z(!s)0f7n36rcyh(x7de63(q14d=$#+!a0b20a8
+      - CORS_ORIGIN_WHITELIST=( 'http://localhost:3000', 'http://localhost:8000', 'http://127.0.0.1:8000', 'http://127.0.0.1:3000', 'http://192.168.99.100:3000', 'http://192.168.99.100:8000', )
+      - DEBUG=1
+    volumes:
+    - ./backend:/backend
+
+    ports:
+      - "8000:8000"
+    stdin_open: true
+
+  frontend:
+    build: ./frontend
+
+    volumes:
+      - build_folder:/frontend/build
+
+    ports:
+      - 3000:3000
+
+    stdin_open: true
+
+    environment:
+      - NODE_ENV=development
+
+    depends_on:
+      - backend
+    command: yarn start
+
+volumes:
+  build_folder:
