@@ -36,8 +36,8 @@ class ListPictures extends React.Component {
                                 hoverable
                                 key={p.pk}
                                 bordered={true}
-                                style={{width: 240}}
-                                cover={<img alt={p.titulo} src={p.url_pic} />}
+                                // style={{width: 240}}
+                                cover={<a href={p.url_pic}><img width="240" alt={p.titulo} src={p.url_pic} /></a>}
                                 actions={[
                                     <DeleteOutlined key="delete" onClick={()=>this.deletePost(p.pk)} />,
                                 ]}
