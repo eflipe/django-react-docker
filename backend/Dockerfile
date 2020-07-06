@@ -4,18 +4,11 @@ FROM python:3.7
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-RUN mkdir /backend
+WORKDIR /app/backend
 
-WORKDIR /backend
-
-COPY Pipfile Pipfile.lock /backend/
-
-
+COPY Pipfile Pipfile.lock /app/backend/
 RUN pip install pipenv && pipenv install --system
 
-COPY . /backend/
+COPY . /app/backend/
 
 EXPOSE 8000
-
-RUN python manage.py makemigrations
-RUN python manage.py migrate

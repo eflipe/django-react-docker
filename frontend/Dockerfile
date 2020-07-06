@@ -1,12 +1,12 @@
-FROM node:14.4.0-alpine3.10
+FROM node:12
 
-USER root
+WORKDIR /app/
 
-WORKDIR /frontend
+#yarn.lock
+COPY package.json /app/
 
-COPY . /frontend
+RUN npm install
+
+COPY . /app/
 
 EXPOSE 3000
-
-RUN yarn
-RUN yarn build
