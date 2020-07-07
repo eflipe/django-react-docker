@@ -33,7 +33,7 @@ WORKDIR /app/frontend/build
 RUN mkdir root && mv *.ico *.js *.json root
 
 # Collect static files
-RUN mkdir /app/backend/staticfiles
+# RUN mkdir /app/backend/staticfiles
 
 WORKDIR /app
 
