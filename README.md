@@ -25,6 +25,9 @@ Deployment utilizando Docker y subido a Heroku: https://heyheymydjreact.herokuap
 ## Sources
 
 [Django, Docker, and PostgreSQL Tutorial](https://learndjango.com/tutorials/django-docker-and-postgresql-tutorial)
+
 [How to Deploy Django REST Framework and React-Redux application with Docker](https://medium.com/swlh/how-to-deploy-django-rest-framework-and-react-redux-application-with-docker-fa902a611abf)
+
 [Docker, Django, React: Building Assets and Deploying to Heroku](https://dev.to/englishcraig/docker-django-react-building-assets-and-deploying-to-heroku-24jh)
+
 [Django + React Introduction](https://github.com/justdjango/DjReact)
