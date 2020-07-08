@@ -38,7 +38,7 @@ RUN mkdir root && mv *.ico *.js *.json root
 WORKDIR /app/backend
 
 # SECRET_KEY is only included here to avoid raising an error when generating static files
-RUN  python manage.py collectstatic --noinput
+# RUN  python manage.py collectstatic --noinput
 
 EXPOSE $PORT
 
