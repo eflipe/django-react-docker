@@ -22,7 +22,7 @@ export const deletePost = (pk,cb) => {
     return dispatch => {
         console.log(pk)
         dispatch({type:Types.POSTS_LOADING, payload:true})
-        axios.delete(API_URL + pk)
+        axios.delete(API_URL + pk + '/')
 
             .then(response => {
                     dispatch({type:Types.DELETE_POST, payload:pk});
