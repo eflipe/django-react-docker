@@ -3,20 +3,22 @@ FROM node:12
 WORKDIR /app/
 
 #yarn.lock
-COPY package.json /app/
+COPY package.json yarn.lock /app/
 
-# RUN npm install
-RUN yarn install
+RUN npm install
+# RUN yarn install
 
 COPY . /app/
 
-RUN yarn build
+# RUN yarn build
 
-WORKDIR /app/frontend/build
+# WORKDIR /app/frontend/build
 
-RUN mkdir root
+# RUN mkdir root
 # RUN mv *.ico *.js *.json root
 
 # COPY . /app/
 
 EXPOSE 3000
+
+CMD npm start

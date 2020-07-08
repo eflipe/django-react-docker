@@ -17,7 +17,7 @@ RUN pip install pipenv && pipenv install --system
 WORKDIR /app/frontend
 
 # ./frontend/yarn.lock
-COPY ./frontend/package.json /app/frontend/
+COPY ./frontend/package.json ./frontend/yarn.lock /app/frontend/
 RUN $HOME/.yarn/bin/yarn install
 
 # Add the rest of the code
@@ -38,7 +38,7 @@ RUN mkdir root && mv *.ico *.js *.json root
 WORKDIR /app/backend
 
 # SECRET_KEY is only included here to avoid raising an error when generating static files
-# RUN  python manage.py collectstatic --noinput
+RUN  python manage.py collectstatic --noinput
 
 EXPOSE $PORT
 
