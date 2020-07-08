@@ -131,7 +131,7 @@ STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
 ]
 
-
+INSTALLED_APPS.extend(["whitenoise.runserver_nostatic"])
 # Must insert after SecurityMiddleware, which is first in settings/common.py
 MIDDLEWARE.insert(1, "whitenoise.middleware.WhiteNoiseMiddleware")
 
@@ -162,6 +162,8 @@ REST_FRAMEWORK = {
     ),
 }
 if ENVIRONMENT == 'production':
+    SECURE_BROWSER_XSS_FILTER = True
+    X_FRAME_OPTIONS = 'DENY'
     SECURE_SSL_REDIRECT = True
     SECURE_HSTS_SECONDS = 3600
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
@@ -169,19 +171,19 @@ if ENVIRONMENT == 'production':
     SECURE_CONTENT_TYPE_NOSNIFF = True
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
-    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-    INSTALLED_APPS.extend(["whitenoise.runserver_nostatic"])
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https') # new
+    #INSTALLED_APPS.extend(["whitenoise.runserver_nostatic"])
 
-    # Must insert after SecurityMiddleware, which is first in settings/common.py
-    MIDDLEWARE.insert(1, "whitenoise.middleware.WhiteNoiseMiddleware")
-
-    TEMPLATES[0]["DIRS"] = [os.path.join(BASE_DIR, "../", "frontend", "build")]
-
-    STATICFILES_DIRS = [os.path.join(BASE_DIR, "../", "frontend", "build", "static")]
-    STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-    STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
-    STATIC_URL = "/static/"
-    WHITENOISE_ROOT = os.path.join(BASE_DIR, "../", "frontend", "build", "root")
+    # # Must insert after SecurityMiddleware, which is first in settings/common.py
+    # MIDDLEWARE.insert(1, "whitenoise.middleware.WhiteNoiseMiddleware")
+    #
+    # TEMPLATES[0]["DIRS"] = [os.path.join(BASE_DIR, "../", "frontend", "build")]
+    #
+    # STATICFILES_DIRS = [os.path.join(BASE_DIR, "../", "frontend", "build", "static")]
+    # STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+    # STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+    # STATIC_URL = "/static/"
+    # WHITENOISE_ROOT = os.path.join(BASE_DIR, "../", "frontend", "build", "root")
 # Heroku settings.
 import django_heroku
 django_heroku.settings(locals())
