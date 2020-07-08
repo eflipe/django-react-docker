@@ -14,7 +14,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = int(os.environ.get('DEBUG', default=0))
 
-ALLOWED_HOSTS = ['glacial-wildwood-88174.herokuapp.com', 'localhost', '192.168.99.100', 'backend', '127.0.0.1']
+ALLOWED_HOSTS = ['heyheymydjreact.herokuapp.com', 'localhost', '192.168.99.100', 'backend', '127.0.0.1']
 
 
 # Application definition
