@@ -1,6 +1,6 @@
 # Intro
 
-Proyecto utilizando Django para el backend y React en el frontend.
+Proyecto de practica utilizando Django para el backend y React en el frontend.
 
 Deployment utilizando Docker y subido a Heroku: https://heyheymydjreact.herokuapp.com/
 
